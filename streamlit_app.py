@@ -69,6 +69,7 @@ def read_file_googledrive(credentials,file_id):
 
 def limpiar_data():
     cars_historico=read_file_googledrive(credentials,'1U6BGO_oD0b84FMTChQ5fDy-Oi3XZaWdb')
+    cars_historico=pd.DataFrame(cars_historico)
     st.write(cars_historico)
 
 
