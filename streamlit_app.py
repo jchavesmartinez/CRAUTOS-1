@@ -74,7 +74,7 @@ def limpiar_data():
 
     # Eliminar filas que no tienen datos
 
-    cars_historico = [person for person in cars_historico if person["Brand"]]
+    cars_historico = [person for person in cars_historico if cars_historico["Brand"]]
 
     st.write(cars_historico)
     
