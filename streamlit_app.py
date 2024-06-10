@@ -69,14 +69,19 @@ def read_file_googledrive(credentials,file_id):
 
 @st.cache_data
 def limpiar_data():
-    cars_historico=read_file_googledrive(credentials,'1U6BGO_oD0b84FMTChQ5fDy-Oi3XZaWdb')
+    try:
+    
+        cars_historico=read_file_googledrive(credentials,'1U6BGO_oD0b84FMTChQ5fDy-Oi3XZaWdb')
 
 
-    # Eliminar filas que no tienen datos
+        # Eliminar filas que no tienen datos
 
-    cars_historico = [person for person in cars_historico if person["name"]]
+        cars_historico = [person for person in cars_historico if person["name"]]
 
-    st.write(cars_historico)
+        st.write(cars_historico)
+    
+    except Exception as e:
+        print(e)
     
     
     
