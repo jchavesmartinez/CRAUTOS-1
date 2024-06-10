@@ -74,6 +74,10 @@ def limpiar_data():
         cars_historico=read_file_googledrive(credentials,'1U6BGO_oD0b84FMTChQ5fDy-Oi3XZaWdb')
 
 
+        cars_historico1=pd.DataFrame(cars_historico)
+        st.write(cars_historico1)
+
+
         # Eliminar filas que no tienen datos
 
         if isinstance(cars_historico, list) and all(isinstance(car, dict) for car in cars_historico):
