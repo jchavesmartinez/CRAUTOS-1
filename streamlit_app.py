@@ -81,7 +81,7 @@ def limpiar_data():
         st.write(cars_historico)
     
     except Exception as e:
-        print(e)
+        st.write(e)
     
     
     
