@@ -83,6 +83,20 @@ def limpiar_data():
         if isinstance(cars_historico, list) and all(isinstance(car, dict) for car in cars_historico):
             cars_historico = [car for car in cars_historico if car.get("Brand")]
 
+        # Precio publicado
+
+        tipo_de_cambio=520
+
+        for car in cars_historico:
+            if car["Price"].startswith("¢"):
+                car["Currency"] = "Colones"
+            elif car["Price"].startswith("$"):
+                car["Currency"] = "Dollars"
+            else:
+                car["Currency"] = "Unknown"
+
+
+
         
     
     except Exception as e:
