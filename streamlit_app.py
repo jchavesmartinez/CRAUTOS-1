@@ -79,23 +79,15 @@ def limpiar_data():
         if isinstance(cars_historico, list) and all(isinstance(car, dict) for car in cars_historico):
             cars_historico = [car for car in cars_historico if car.get("Brand")]
 
-        st.write(cars_historico)
+        
     
     except Exception as e:
         st.write(e)
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    #cars_historico=pd.DataFrame(cars_historico)
+    cars_historico=pd.DataFrame(cars_historico)
+    st.write(cars_historico)
     
 
 
