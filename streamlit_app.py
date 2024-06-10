@@ -76,7 +76,8 @@ def limpiar_data():
 
         # Eliminar filas que no tienen datos
 
-        cars_historico = [person for person in cars_historico if person["Brand"]]
+        if isinstance(cars_historico, list) and all(isinstance(car, dict) for car in cars_historico):
+            cars_historico = [car for car in cars_historico if car.get("Brand")]
 
         st.write(cars_historico)
     
