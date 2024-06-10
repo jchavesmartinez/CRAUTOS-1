@@ -73,6 +73,5 @@ def limpiar_data():
 
 
 
-
-
+limpiar_data()
 st.text("holaa")
