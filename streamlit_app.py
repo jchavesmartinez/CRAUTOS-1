@@ -94,6 +94,8 @@ def limpiar_data():
                 car["Currency"] = "Dollars"
             else:
                 car["Currency"] = "Unknown"
+            
+            car["Price"] = int(car["Price"].replace("¢", "").replace("$", "").replace(",", ""))
 
 
 
