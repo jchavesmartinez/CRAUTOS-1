@@ -75,4 +75,4 @@ def limpiar_data():
 
 
 limpiar_data()
-st.text("holaa")
+st.text("hola")
