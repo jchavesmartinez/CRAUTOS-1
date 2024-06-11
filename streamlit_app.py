@@ -112,7 +112,7 @@ def limpiar_data():
                 
                 if 'mil' in mileage_str:
                     car['Kilometraje'] = int(mileage_value * 1.60934)  # Convert miles to kilometers
-                elif 'km' in mileage_str:
+                elif 'k' in mileage_str:
                     car['Kilometraje'] = int(mileage_value)
 
 
