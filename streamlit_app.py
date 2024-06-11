@@ -102,7 +102,6 @@ def limpiar_data():
 
         # Cambiar kilometraje
 
-        for car in cars_historico:
             mileage_str = car['Kilometraje']
             
             if "ND" in mileage_str:
