@@ -106,8 +106,6 @@ def limpiar_data():
             
             if "ND" in mileage_str:
                 car['Kilometraje'] = 0
-            if car['Costo de Traspaso (aprox.)']==None:
-                car['Costo de Traspaso (aprox.)']=0
             else:
                 mileage_value = int(re.sub(r'[^0-9]', '', mileage_str))  # Extract numeric part
                 
@@ -116,7 +114,15 @@ def limpiar_data():
                 elif 'k' in mileage_str:
                     car['Kilometraje'] = int(mileage_value)
             
+            # Cambiar visualizaciones
+            
             car['Visualizaciones']=int(re.sub(r'[^0-9]', '', car['Visualizaciones']))
+
+            # Cambiar costo de traspaso
+
+            if car['Costo de Traspaso (aprox.)']==None:
+                car['Costo de Traspaso (aprox.)']=0
+
             car['Costo de Traspaso (aprox.)']=int(re.sub(r'[^0-9]', '', car['Costo de Traspaso (aprox.)']))
 
 
