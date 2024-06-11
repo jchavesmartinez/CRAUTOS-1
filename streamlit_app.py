@@ -104,7 +104,10 @@ def limpiar_data():
 
         for car in cars_historico:
             mileage_str = car['Kilometraje']
-            if 'mil' in mileage_str:
+            
+            if "ND" in mileage_str:
+                car['Kilometraje']=0
+            elif 'mil' in mileage_str:
                 mileage_value = int(mileage_str.replace(' mil', '').replace(',', ''))
                 car['Kilometraje'] = mileage_value * 1.60934  # Convert miles to kilometers
             elif 'km' in mileage_str:
