@@ -115,7 +115,7 @@ def limpiar_data():
                     car['Kilometraje'] = int(mileage_value)
             
             car['Visualizaciones']=int(re.sub(r'[^0-9]', '', car['Visualizaciones']))
-            car['Costo de Traspado (aprox.)']=int(re.sub(r'[^0-9]', '', car['Visualizaciones']))
+            car['Costo de Traspado (aprox.)']=int(re.sub(r'[^0-9]', '', car['Costo de Traspado (aprox.)']))
 
 
 
