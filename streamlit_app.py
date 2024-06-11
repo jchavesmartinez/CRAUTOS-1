@@ -120,10 +120,10 @@ def limpiar_data():
 
             # Cambiar costo de traspaso
 
-            if car['Costo de Traspaso (aprox.)'] == "":
-                car['Costo de Traspaso (aprox.)'] = 0
+            # if car['Costo de Traspaso (aprox.)'] == "":
+            #     car['Costo de Traspaso (aprox.)'] = 0
             #else:
-            #    car['Costo de Traspaso (aprox.)'] = int(re.sub(r'[^0-9]', '', car['Costo de Traspaso (aprox.)']))
+            car['Costo de Traspaso (aprox.)'] = int(re.sub(r'[^0-9]', '', '¢    20,426Monto puede variar dependiendo del precio de venta final, y valor fiscal del vehículo. No incluye honorarios del abogado.'))
 
 
 
