@@ -97,6 +97,9 @@ def limpiar_data():
             
             car["Price"] = int(car["Price"].replace("¢", "").replace("$", "").replace(",", ""))
 
+            if car["Currency"] == "Dollars":
+                car["Price"]=car["Price"]*tipo_de_cambio
+
 
 
         
