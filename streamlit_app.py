@@ -106,7 +106,7 @@ def limpiar_data():
             mileage_str = car['Kilometraje']
             
             if "ND" in mileage_str:
-                car['Kilometraje'] = 0
+                car['Kilometraje'] = 999999
             else:
                 mileage_value = int(re.sub(r'[^0-9]', '', mileage_str))  # Extract numeric part
                 
