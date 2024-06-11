@@ -125,7 +125,7 @@ def limpiar_data():
                 else:
                     car['Costo de Traspaso (aprox.)'] = int(re.sub(r'[^0-9]', '', car['Costo de Traspaso (aprox.)']))
             except Exception as e:
-                st.write(e)
+                print(e)
 
 
         
