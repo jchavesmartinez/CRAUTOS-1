@@ -111,9 +111,9 @@ def limpiar_data():
                 mileage_value = int(re.sub(r'[^0-9]', '', mileage_str))  # Extract numeric part
                 
                 if 'mil' in mileage_str:
-                    car['Kilometraje'] = mileage_value * 1.60934  # Convert miles to kilometers
+                    car['Kilometraje'] = int(mileage_value * 1.60934)  # Convert miles to kilometers
                 elif 'km' in mileage_str:
-                    car['Kilometraje'] = mileage_value
+                    car['Kilometraje'] = int(mileage_value)
 
 
 
