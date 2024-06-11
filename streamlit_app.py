@@ -104,6 +104,7 @@ def limpiar_data():
 
         for car in cars_historico:
             mileage_str = car['Kilometraje']
+            mileage_value = int(re.sub(r'[^0-9]', '', mileage_str))
             
             if "ND" in mileage_str:
                 car['Kilometraje']=0
