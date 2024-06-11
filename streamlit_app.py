@@ -100,6 +100,17 @@ def limpiar_data():
             if car["Currency"] == "Dollars":
                 car["Price"]=car["Price"]*tipo_de_cambio
 
+        # Cambiar kilometraje
+
+        for car in cars_historico:
+            mileage_str = car['Kilometraje']
+            if 'mil' in mileage_str:
+                mileage_value = int(mileage_str.replace(' mil', '').replace(',', ''))
+                car['Kilometraje'] = mileage_value * 1.60934  # Convert miles to kilometers
+            elif 'km' in mileage_str:
+                mileage_value = int(mileage_str.replace(' km', '').replace(',', ''))
+                car['Kilometraje'] = mileage_value
+
 
 
         
