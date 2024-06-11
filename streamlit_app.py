@@ -119,11 +119,13 @@ def limpiar_data():
             car['Visualizaciones']=int(re.sub(r'[^0-9]', '', car['Visualizaciones']))
 
             # Cambiar costo de traspaso
-            if car['Costo de Traspaso (aprox.)'] is None:
-                car['Costo de Traspaso (aprox.)'] = 0
-            else:
-                car['Costo de Traspaso (aprox.)'] = int(re.sub(r'[^0-9]', '', car['Costo de Traspaso (aprox.)']))
-
+            try:
+                if car['Costo de Traspaso (aprox.)'] is None:
+                    car['Costo de Traspaso (aprox.)'] = 0
+                else:
+                    car['Costo de Traspaso (aprox.)'] = int(re.sub(r'[^0-9]', '', car['Costo de Traspaso (aprox.)']))
+            except Exception as e:
+                st.write(e)
 
 
         
