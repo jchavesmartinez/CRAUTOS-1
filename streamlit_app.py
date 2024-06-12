@@ -75,7 +75,7 @@ def limpiar_data():
 
 
         cars_historico1=pd.DataFrame(cars_historico)
-        st.write(cars_historico1)
+        #st.write(cars_historico1)
 
 
         # Eliminar filas que no tienen datos
