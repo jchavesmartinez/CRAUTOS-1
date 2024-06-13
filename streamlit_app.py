@@ -165,6 +165,7 @@ def limpiar_data():
 
     new_column_names = {
         'SKU': 'Vehiculo_ID',
+        'Model': 'MarcaModelo',
     }
 
     cars_historico.rename(columns=new_column_names, inplace=True)
