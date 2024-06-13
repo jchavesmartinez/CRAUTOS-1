@@ -159,8 +159,7 @@ def limpiar_data():
     
     except Exception as e:
         st.write(e)
-    
-    
+        
     
     cars_historico=pd.DataFrame(cars_historico)
     st.write(cars_historico)
