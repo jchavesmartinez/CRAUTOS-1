@@ -128,8 +128,25 @@ def limpiar_data():
             # Cambiar fecha de ingreso
 
 
-            locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
-            car['Fecha de ingreso'] = datetime.strptime(car['Fecha de ingreso'], "%d de %B del %Y").strftime("%Y-%m-%d")
+            month_map = {
+                'Enero': '01',
+                'Febrero': '02',
+                'Marzo': '03',
+                'Abril': '04',
+                'Mayo': '05',
+                'Junio': '06',
+                'Julio': '07',
+                'Agosto': '08',
+                'Septiembre': '09',
+                'Octubre': '10',
+                'Noviembre': '11',
+                'Diciembre': '12'
+            }
+
+            # Split the date string and replace the month name with its number
+            day, month_name, year = car['Fecha de ingreso'].split(' de ')
+            month = month_map[month_name]
+            car['Fecha de ingreso']=f"{year}-{month}-{day.zfill(2)}"
 
 
         
