@@ -162,17 +162,10 @@ def limpiar_data():
         
     
     cars_historico=pd.DataFrame(cars_historico)
-    st.write(cars_historico)
+    return cars_historico
     
+cars_historico=limpiar_data()
 
 
-
-
-
-
-
-
-
-limpiar_data()
-st.write("hila")
+st.write(cars_historico)
 
