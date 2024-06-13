@@ -143,11 +143,17 @@ def limpiar_data():
                 'Diciembre': '12'
             }
 
-            # Split the date string and replace the month name with its number
-            day, month_name, year = car['Fecha de ingreso'].split(' de ')
-            month = month_map[month_name]
-            car['Fecha de ingreso']=f"{year}-{month}-{day.zfill(2)}"
+            # Split the date string using " de " and " del "
+            date_parts = car['Fecha de ingreso'].replace(' del ', ' de ').split(' de ')
+            day = date_parts[0]
+            month_name = date_parts[1]
+            year = date_parts[2]
 
+            # Convert month name to number using the dictionary
+            month = month_map[month_name]
+
+            # Construct the formatted date string
+            formatted_date = f"{year}-{month}-{day.zfill(2)}"
 
         
     
