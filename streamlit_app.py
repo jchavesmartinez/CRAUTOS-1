@@ -163,9 +163,20 @@ def limpiar_data():
     
     cars_historico=pd.DataFrame(cars_historico)
     return cars_historico
-    
+
+def visuales_estadisticas(cars_historico):
+    print("hola")
+
+
+
+
+
+
+
+
 cars_historico=limpiar_data()
 
+st.title('Portal de inversión carros Costa Rica')
 
 st.write(cars_historico)
 
