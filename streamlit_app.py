@@ -153,7 +153,7 @@ def limpiar_data():
             month = month_map[month_name]
 
             # Construct the formatted date string
-            formatted_date = f"{year}-{month}-{day.zfill(2)}"
+            car['Fecha de ingreso']= f"{year}-{month}-{day.zfill(2)}"
 
         
     
