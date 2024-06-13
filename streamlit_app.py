@@ -13,6 +13,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import altair as alt
 import numpy as np
+import locale
 
 st.set_page_config(
   page_title="DevStack ERP",
@@ -123,6 +124,12 @@ def limpiar_data():
                 car['Costo de Traspaso (aprox.)'] = int(re.sub(r'[^0-9]', '', car['Costo de Traspaso (aprox.)']))
             except:
                 car['Costo de Traspaso (aprox.)'] = 0
+            
+            # Cambiar fecha de ingreso
+
+
+            locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+            car['Fecha de ingreso'] = datetime.strptime(car['Fecha de ingreso'], "%d de %B del %Y").strftime("%Y-%m-%d")
 
 
         
