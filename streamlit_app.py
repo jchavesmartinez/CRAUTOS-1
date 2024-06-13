@@ -167,6 +167,8 @@ def limpiar_data():
         'SKU': 'Vehiculo_ID',
     }
 
+    cars_historico.rename(columns=new_column_names, inplace=True)
+
     return cars_historico
 
 def visuales_estadisticas(cars_historico):
