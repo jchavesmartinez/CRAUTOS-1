@@ -162,6 +162,11 @@ def limpiar_data():
         
     
     cars_historico=pd.DataFrame(cars_historico)
+
+    new_column_names = {
+        'SKU': 'Vehiculo_ID',
+    }
+
     return cars_historico
 
 def visuales_estadisticas(cars_historico):
