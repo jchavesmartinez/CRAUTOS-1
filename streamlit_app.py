@@ -188,10 +188,20 @@ def menu_filtros(cars_historico):
     
     with st.expander("Menu de filtros"):
 
-        st.write(cars_historico)
+        data = {
+            'Region': ['North America', 'North America', 'North America', 'Europe', 'Europe', 'Asia', 'Asia'],
+            'Country': ['USA', 'USA', 'Canada', 'Germany', 'France', 'Japan', 'China'],
+            'City': ['New York', 'Los Angeles', 'Toronto', 'Berlin', 'Paris', 'Tokyo', 'Beijing']
+            }
 
-        dynamic_filters = DynamicFilters(cars_historico, filters=['Marca', 'MarcaModelo', 'Combustible', 'Estilo'])
-        dynamic_filters.display_filters()
+        df = pd.DataFrame(data)
+
+        dynamic_filters = DynamicFilters(df, filters=['Region', 'Country', 'City'])
+
+        with st.sidebar:
+            dynamic_filters.display_filters()
+
+        dynamic_filters.display_df()
 
 
 
