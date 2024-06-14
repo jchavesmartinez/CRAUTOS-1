@@ -192,7 +192,7 @@ def menu_filtros(cars_historico):
 
         st.write(cars_historico)
 
-        dynamic_filters = DynamicFilters(cars_historico, filters=['Marca', 'MarcaModelo', 'Combustible', 'Estilo'])
+        dynamic_filters = DynamicFilters(cars_historico, filters=['Marca','Cilindrada', 'Estado','Transmision','MarcaModelo','Combustible', 'Color exterior','Placa','Estilo','Pasajeros', 'Color interior','Puertas'])
         dynamic_filters.display_filters()
 
 
