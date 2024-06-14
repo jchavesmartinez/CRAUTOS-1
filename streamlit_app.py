@@ -203,7 +203,8 @@ def menu_filtros(cars_historico):
 
         try:
 
-            fechafiltro = st.slider('Año', min(df['Año']), max(df['Año'])+1, (min(df['Año']), max(df['Año'])+1))
+            cars_historico = cars_historico.astype(str)
+            fechafiltro = st.slider('Año', min(int(df['Año'])), max(int(df['Año']))+1, (min(int(df['Año'])), max(int(df['Año']))+1))
             df=df[(df['Año'] >= list(fechafiltro)[0] ) & (df['Año'] <= list(fechafiltro)[1])]
 
         except:
