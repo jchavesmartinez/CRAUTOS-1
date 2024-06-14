@@ -16,7 +16,7 @@ import numpy as np
 import locale
 
 st.set_page_config(
-  page_title="DevStack ERP",
+  page_title="DevStack CRAutos",
   page_icon="🤑",
   layout="wide",
 )
@@ -176,8 +176,24 @@ def limpiar_data():
 
     return cars_historico
 
-def visuales_estadisticas(cars_historico):
-    print("hola")
+
+
+def menu_filtros(cars_historico):
+
+    modelo=cars_historico.copy()
+
+    filters = {}
+    filtered_df = cars_historico.copy()
+    
+    with st.expander("Menu de filtros"):
+
+        dynamic_filters = DynamicFilters(cars_historico, filters=['Marca','Cilindrada', 'Estado','Transmision','MarcaModelo','Combustible', 'Color ext','Placa','Estilo','Pasajeros', 'Color int','Puertas'])
+        dynamic_filters.display_filters(location='columns', num_columns=2)
+
+        cars_historico=dynamic_filters.filter_df()
+
+        st.markdown('<hr>', unsafe_allow_html=True)
+    
 
 
 
