@@ -175,8 +175,6 @@ def limpiar_data():
 
     cars_historico.rename(columns=new_column_names, inplace=True)
 
-    st.write(cars_historico)
-
     return cars_historico
 
 
