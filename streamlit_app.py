@@ -215,9 +215,18 @@ def menu_filtros(cars_historico):
             st.write('Solo existe un elemento, no es posible filtrar más los años')
 
         try:
-        
-            preciofiltro = st.slider('Precio (Millones)', float(min(df['Precio'])/1000000), float((max(df['Precio'])+1)/1000000), (float(min(df['Precio']))/1000000,float(max(df['Precio'])+1)/1000000), step=500000/1000000)
-            df=df[(df['Precio'] >= list(preciofiltro)[0]*1000000 ) & (df['Precio'] <= list(preciofiltro)[1]*1000000)]
+
+            df['Precio'] = pd.to_numeric(df['Precio'], errors='coerce')
+
+            # Create the slider for selecting the price range
+            preciofiltro = st.slider('Precio (Millones)', 
+                                    float(min(df['Precio'])/1000000), 
+                                    float((max(df['Precio'])+1)/1000000), 
+                                    (float(min(df['Precio'])/1000000), float(max(df['Precio'])+1)/1000000), 
+                                    step=500000/1000000)
+
+            # Filter the DataFrame based on the selected range
+            df = df[(df['Precio'] >= preciofiltro[0]*1000000) & (df['Precio'] <= preciofiltro[1]*1000000)]
 
         except Exception as e:
             st.write(e)
