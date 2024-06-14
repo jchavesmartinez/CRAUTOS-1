@@ -219,9 +219,11 @@ def menu_filtros(cars_historico):
             preciofiltro = st.slider('Precio (Millones)', float(min(df['Precio'])/1000000), float((max(df['Precio'])+1)/1000000), (float(min(df['Precio']))/1000000,float(max(df['Precio'])+1)/1000000), step=500000/1000000)
             df=df[(df['Precio'] >= list(preciofiltro)[0]*1000000 ) & (df['Precio'] <= list(preciofiltro)[1]*1000000)]
 
-        except:
+        except Exception as e:
+            st.write(e)
             st.write('Solo existe un elemento, no es posible filtrar más el precio')
             
+        
         try:
         
             kmfiltro = st.slider('Kilometros', int(min(df['Kilometraje'])), int(max(df['Kilometraje']))+1, (int(min(df['Kilometraje'])),int(max(df['Kilometraje']))+1), step=10000)
