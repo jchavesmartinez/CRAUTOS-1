@@ -194,7 +194,7 @@ def menu_filtros(cars_historico):
 
         #cars_historico=dynamic_filters.filter_df()
 
-        #st.markdown('<hr>', unsafe_allow_html=True)
+        st.markdown('<hr>', unsafe_allow_html=True)
     
 
 
