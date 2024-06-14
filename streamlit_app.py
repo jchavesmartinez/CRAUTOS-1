@@ -170,7 +170,7 @@ def limpiar_data():
         'Brand' : 'Marca',
         'Year' : 'Año',
         'Currency' : 'Moneda',
-        'Transmisión' : 'Trasnmision'
+        'Transmisión' : 'Transmision'
     }
 
     cars_historico.rename(columns=new_column_names, inplace=True)
