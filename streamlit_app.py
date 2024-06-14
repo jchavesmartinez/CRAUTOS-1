@@ -170,7 +170,8 @@ def limpiar_data():
         'Brand' : 'Marca',
         'Year' : 'Año',
         'Currency' : 'Moneda',
-        'Transmisión' : 'Transmision'
+        'Transmisión' : 'Transmision',
+        '# de pasajeros' : 'Pasajeros'
     }
 
     cars_historico.rename(columns=new_column_names, inplace=True)
@@ -192,7 +193,7 @@ def menu_filtros(cars_historico):
 
         st.write(cars_historico)
 
-        dynamic_filters = DynamicFilters(cars_historico, filters=['Marca','Cilindrada', 'Estado','Transmision','MarcaModelo','Combustible', 'Color exterior','Placa','Estilo','# de pasajeros', 'Color interior','# de Puertas'])
+        dynamic_filters = DynamicFilters(cars_historico, filters=['Marca','Cilindrada', 'Estado','Transmision','MarcaModelo','Combustible', 'Color exterior','Placa','Estilo','Pasajeros', 'Color interior','# de Puertas'])
         dynamic_filters.display_filters(location='columns', num_columns=2)
 
 
