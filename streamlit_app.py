@@ -206,8 +206,8 @@ def menu_filtros(cars_historico):
             df=df[(int(df['Año']) >= list(fechafiltro)[0] ) & (int(df['Año']) <= list(fechafiltro)[1])]
 
         except Exception as e:
-            print(e)
-            st.write('Solo existe un elemento, no es posible filtrar más los años')
+            st.write(e)
+
 
         try:
         
