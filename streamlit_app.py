@@ -174,6 +174,8 @@ def limpiar_data():
 
     cars_historico.rename(columns=new_column_names, inplace=True)
 
+    st.write(cars_historico)
+
     return cars_historico
 
 
@@ -202,8 +204,6 @@ def menu_filtros(cars_historico):
 
 
 st.title('Portal de inversión carros Costa Rica')
-
-st.write(cars_historico)
 
 cars_historico=limpiar_data()
 
