@@ -181,6 +181,8 @@ def limpiar_data():
 
 def menu_filtros(cars_historico):
 
+    cars_historico = cars_historico.astype(str)
+    
     modelo=cars_historico.copy()
 
     filters = {}
@@ -188,19 +190,10 @@ def menu_filtros(cars_historico):
     
     with st.expander("Menu de filtros"):
 
-        data = {
-            'Region': ['North America', 'North America', 'North America', 'Europe', 'Europe', 'Asia', 'Asia'],
-            'Country': ['USA', 'USA', 'Canada', 'Germany', 'France', 'Japan', 'China'],
-            'City': [1, 'Los Angeles', 'Toronto', 'Berlin', 'Paris', 'Tokyo', 'Beijing']
-            }
+        st.write(cars_historico)
 
-        df = pd.DataFrame(data)
-
-        dynamic_filters = DynamicFilters(df, filters=['Region', 'Country', 'City'])
-
-        dynamic_filters.display_filters(location='columns', num_columns=2)
-
-        dynamic_filters.display_df()
+        dynamic_filters = DynamicFilters(cars_historico, filters=['Marca', 'MarcaModelo', 'Combustible', 'Estilo'])
+        dynamic_filters.display_filters()
 
 
 
