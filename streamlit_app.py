@@ -171,7 +171,8 @@ def limpiar_data():
         'Year' : 'Año',
         'Currency' : 'Moneda',
         'Transmisión' : 'Transmision',
-        '# de pasajeros' : 'Pasajeros'
+        '# de pasajeros' : 'Pasajeros',
+        '# de puertas' : 'Puertas'
     }
 
     cars_historico.rename(columns=new_column_names, inplace=True)
