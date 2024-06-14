@@ -201,6 +201,8 @@ def menu_filtros(cars_historico):
 
         st.markdown('<hr>', unsafe_allow_html=True)
 
+        df = df.astype(str)
+
         try:
 
             fechafiltro = st.slider('Año', min(df['Año']), max(df['Año'])+1, (min(df['Año']), max(df['Año'])+1))
