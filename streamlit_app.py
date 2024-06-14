@@ -181,18 +181,22 @@ def limpiar_data():
 
 
 def menu_filtros(cars_historico):
-
-    modelo=cars_historico.copy()
-
+    modelo = cars_historico.copy()
+    
+    # Convert all columns to appropriate types
+    for col in cars_historico.columns:
+        if cars_historico[col].dtype == 'object':
+            # Try converting to numeric and then fill NaNs
+            cars_historico[col] = pd.to_numeric(cars_historico[col], errors='coerce').fillna(cars_historico[col])
+        elif cars_historico[col].dtype == 'float64' or cars_historico[col].dtype == 'int64':
+            cars_historico[col] = cars_historico[col].fillna(0)
+    
     filters = {}
     filtered_df = cars_historico.copy()
     
     with st.expander("Menu de filtros"):
-
-        dynamic_filters = DynamicFilters(cars_historico, filters=['Estilo','Combustible'])
+        dynamic_filters = DynamicFilters(cars_historico, filters=['Estilo', 'Combustible'])
         dynamic_filters.display_filters(location='columns', num_columns=2)
-
-        #cars_historico=dynamic_filters.filter_df()
 
         st.markdown('<hr>', unsafe_allow_html=True)
     
