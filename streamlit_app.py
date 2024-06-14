@@ -201,10 +201,15 @@ def menu_filtros(cars_historico):
 
 
 
-
-cars_historico=limpiar_data()
-
 st.title('Portal de inversión carros Costa Rica')
 
 st.write(cars_historico)
+
+cars_historico=limpiar_data()
+
+menu_filtros(cars_historico)
+
+
+
+
 
