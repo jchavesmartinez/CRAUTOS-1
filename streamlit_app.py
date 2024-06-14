@@ -201,12 +201,15 @@ def menu_filtros(cars_historico):
 
         st.markdown('<hr>', unsafe_allow_html=True)
 
-        df = df.astype(str)
-
         try:
+            # Ensure the 'Año' column is of integer type
+            df['Año'] = df['Año'].astype(int)
 
-            fechafiltro = st.slider('Año', min(df['Año']), max(df['Año'])+1, (min(df['Año']), max(df['Año'])+1))
-            df=df[(df['Año'] >= list(fechafiltro)[0] ) & (df['Año'] <= list(fechafiltro)[1])]
+            # Create the slider for selecting the year range
+            fechafiltro = st.slider('Año', min(df['Año']), max(df['Año']) + 1, (min(df['Año']), max(df['Año']) + 1))
+
+            # Filter the DataFrame based on the selected range
+            df = df[(df['Año'] >= fechafiltro[0]) & (df['Año'] <= fechafiltro[1])]
 
         except Exception as e:
             st.write(e)
