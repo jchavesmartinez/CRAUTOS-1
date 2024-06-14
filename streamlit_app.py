@@ -197,6 +197,12 @@ def menu_filtros(cars_historico):
         dynamic_filters = DynamicFilters(cars_historico, filters=['Marca','Cilindrada', 'Estado','Transmision','MarcaModelo','Combustible', 'Color exterior','Placa','Estilo','Pasajeros', 'Color interior','Puertas'])
         dynamic_filters.display_filters(location='columns', num_columns=2)
 
+        df=dynamic_filters.filter_df()
+
+        st.markdown('<hr>', unsafe_allow_html=True)
+
+        
+
 
 
 
