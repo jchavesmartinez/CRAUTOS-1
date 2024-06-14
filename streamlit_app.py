@@ -167,6 +167,9 @@ def limpiar_data():
         'SKU': 'Vehiculo_ID',
         'Model': 'MarcaModelo',
         'Price': 'Precio',
+        'Brand' : 'Marca',
+        'Year' : 'Año',
+        'Currency' : 'Moneda'
     }
 
     cars_historico.rename(columns=new_column_names, inplace=True)
