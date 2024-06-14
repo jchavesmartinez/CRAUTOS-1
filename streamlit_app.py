@@ -198,7 +198,7 @@ def menu_filtros(cars_historico):
 
         dynamic_filters = DynamicFilters(df, filters=['Region', 'Country', 'City'])
 
-        dynamic_filters.display_filters()
+        dynamic_filters.display_filters(location='columns', num_columns=2)
 
         dynamic_filters.display_df()
 
