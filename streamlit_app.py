@@ -190,11 +190,11 @@ def menu_filtros(cars_historico):
     with st.expander("Menu de filtros"):
 
         dynamic_filters = DynamicFilters(cars_historico, filters=['Estilo','Combustible'])
-        dynamic_filters.display_filters(location='columns', num_columns=2)
+        #dynamic_filters.display_filters(location='columns', num_columns=2)
 
-        cars_historico=dynamic_filters.filter_df()
+        #cars_historico=dynamic_filters.filter_df()
 
-        st.markdown('<hr>', unsafe_allow_html=True)
+        #st.markdown('<hr>', unsafe_allow_html=True)
     
 
 
@@ -207,7 +207,7 @@ st.title('Portal de inversión carros Costa Rica')
 
 cars_historico=limpiar_data()
 
-#menu_filtros(cars_historico)
+menu_filtros(cars_historico)
 
 
 
