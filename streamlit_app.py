@@ -207,7 +207,7 @@ st.title('Portal de inversión carros Costa Rica')
 
 cars_historico=limpiar_data()
 
-menu_filtros(cars_historico)
+#menu_filtros(cars_historico)
 
 
 
