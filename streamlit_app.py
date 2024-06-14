@@ -191,7 +191,7 @@ def menu_filtros(cars_historico):
         data = {
             'Region': ['North America', 'North America', 'North America', 'Europe', 'Europe', 'Asia', 'Asia'],
             'Country': ['USA', 'USA', 'Canada', 'Germany', 'France', 'Japan', 'China'],
-            'City': ['New York', 'Los Angeles', 'Toronto', 'Berlin', 'Paris', 'Tokyo', 'Beijing']
+            'City': [1, 'Los Angeles', 'Toronto', 'Berlin', 'Paris', 'Tokyo', 'Beijing']
             }
 
         df = pd.DataFrame(data)
