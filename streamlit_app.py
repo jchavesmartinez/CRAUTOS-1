@@ -179,7 +179,8 @@ def limpiar_data():
 
     return cars_historico
 
-
+def agrupar_por_años(cars_historico):
+    st.write(cars_historico)
 
 def estadisticas_visuales(cars_historico):
 
@@ -757,6 +758,8 @@ def estadisticas_visuales(cars_historico):
 st.title('Portal de inversión carros Costa Rica')
 
 cars_historico=limpiar_data()
+
+agrupar_por_años(cars_historico)
 
 estadisticas_visuales(cars_historico)
 
