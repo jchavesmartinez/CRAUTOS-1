@@ -787,8 +787,6 @@ def estadisticas_visuales(cars_historico):
 
             modelo.rename(columns=new_column_names, inplace=True)
 
-            st.dataframe(modelo)
-
             st.data_editor(
                 modelo,
                 column_config={
