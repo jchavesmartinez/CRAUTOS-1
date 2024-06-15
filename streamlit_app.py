@@ -791,7 +791,7 @@ def estadisticas_visuales(cars_historico):
                 modelo,
                 column_config={
                     "Página Web": st.column_config.LinkColumn(
-                        "App Creator", display_text="Open car"
+                        "Página Web", display_text="Ver carro"
                     ),
                 },
                 hide_index=True,
