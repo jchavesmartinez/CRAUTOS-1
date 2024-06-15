@@ -566,7 +566,7 @@ def estadisticas_visuales(cars_historico):
             if grafico2=='Histograma':
 
                 option2 = st.selectbox(
-                    'WENAS',
+                    'Variable a graficar ',
                     ('MarcaModelo','Marca','Precio','Cilindrada','Estilo','Pasajeros','Combustible','Transmision','Estado','Kilometraje','Placa','Color ext','Color int','Puertas','Provincia','Grupo de años'))
 
                 
