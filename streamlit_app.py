@@ -788,6 +788,16 @@ def estadisticas_visuales(cars_historico):
             modelo.rename(columns=new_column_names, inplace=True)
 
             st.dataframe(modelo)
+
+            st.data_editor(
+                modelo,
+                column_config={
+                    "URL": st.column_config.LinkColumn(
+                        "App Creator", display_text="Open car"
+                    ),
+                },
+                hide_index=True,
+            )
         
         except:
             st.write("No existen potenciales inversiones")
