@@ -484,135 +484,135 @@ def estadisticas_visuales(cars_historico):
 
 
         
-        # col3, col4, col5, col6, col7 , col8, col9 = st.columns(7)
-        # col3.metric("Carros totales", len(df['Marca']))
-        # col4.metric("Precio min", int(min(df['Precio'])))
-        # col5.metric("Precio promedio", int(df['Precio'].mean()))
-        # col6.metric("Precio moda", int(df['Precio'].mode()))
-        # col7.metric("Mediana precio", int(df['Precio'].median()))
-        # col8.metric("Precio maximo", int(max(df['Precio'])))
-        # col9.metric("Desviacion estandar relativa", str(int((df['Precio'].std()/df['Precio'].mean())*100))+"%")
+        col3, col4, col5, col6, col7 , col8, col9 = st.columns(7)
+        col3.metric("Carros totales", len(df['Marca']))
+        col4.metric("Precio min", int(min(df['Precio'])))
+        col5.metric("Precio promedio", int(df['Precio'].mean()))
+        col6.metric("Precio moda", int(df['Precio'].mode()))
+        col7.metric("Mediana precio", int(df['Precio'].median()))
+        col8.metric("Precio maximo", int(max(df['Precio'])))
+        col9.metric("Desviacion estandar relativa", str(int((df['Precio'].std()/df['Precio'].mean())*100))+"%")
     
-        # st.markdown('<hr>', unsafe_allow_html=True)
+        st.markdown('<hr>', unsafe_allow_html=True)
 
 
-        # col1, col2 = st.columns([1, 1])
+        col1, col2 = st.columns([1, 1])
 
-        # with col1:
+        with col1:
 
-        #     grafico1 = st.radio(
-        #         "Grafico a mostrar ",
-        #         ["Histograma", "Dispersión"],
-        #         horizontal=True,
-        #     )
+            grafico1 = st.radio(
+                "Grafico a mostrar ",
+                ["Histograma", "Dispersión"],
+                horizontal=True,
+            )
 
-        #     st.markdown('<hr>', unsafe_allow_html=True)
+            st.markdown('<hr>', unsafe_allow_html=True)
 
 
-        #     if grafico1=='Histograma':
+            if grafico1=='Histograma':
 
-        #         option1 = st.selectbox(
-        #             'Variable a graficar',
-        #             ('Grupo de años','MarcaModelo','Marca','Precio','Cilindrada','Estilo','Pasajeros','Combustible','Transmision','Estado','Kilometraje','Placa','Color ext','Color int','Puertas','Provincia'))
+                option1 = st.selectbox(
+                    'Variable a graficar',
+                    ('Grupo de años','MarcaModelo','Marca','Precio','Cilindrada','Estilo','Pasajeros','Combustible','Transmision','Estado','Kilometraje','Placa','Color ext','Color int','Puertas','Provincia'))
 
-        #         # Create a sample DataFrame (replace this with your 'df' from the CSV)
-        #         data1 = {'values': df[option1].values}
-        #         df1 = pd.DataFrame(data1)
+                # Create a sample DataFrame (replace this with your 'df' from the CSV)
+                data1 = {'values': df[option1].values}
+                df1 = pd.DataFrame(data1)
 
-        #         # Create a histogram using Plotly Express
-        #         fig1 = px.histogram(df1, x='values', nbins=10, title='Histograma '+str(option1))
+                # Create a histogram using Plotly Express
+                fig1 = px.histogram(df1, x='values', nbins=10, title='Histograma '+str(option1))
 
-        #         fig1.update_layout(
-        #             plot_bgcolor='white',  # Background color of the plot area
-        #             paper_bgcolor='white'  # Background color of the entire figure
-        #         )
+                fig1.update_layout(
+                    plot_bgcolor='white',  # Background color of the plot area
+                    paper_bgcolor='white'  # Background color of the entire figure
+                )
                 
-        #         # Display the histogram in the Streamlit app
-        #         fig1.update_layout(width=760, height=500)
+                # Display the histogram in the Streamlit app
+                fig1.update_layout(width=760, height=500)
 
-        #         st.plotly_chart(fig1)
+                st.plotly_chart(fig1)
 
-        #     if grafico1=='Dispersión':
+            if grafico1=='Dispersión':
 
-        #         # Sample data
-        #         np.random.seed(40)
-        #         data = pd.DataFrame({
-        #             'X': np.random.rand(40),
-        #             'Y': np.random.rand(40),
-        #             'Category': np.random.choice(['A', 'B'], size=50)
-        #         })
+                # Sample data
+                np.random.seed(40)
+                data = pd.DataFrame({
+                    'X': np.random.rand(40),
+                    'Y': np.random.rand(40),
+                    'Category': np.random.choice(['A', 'B'], size=50)
+                })
 
-        #         # Scatter plot using Plotly Express
-        #         fig4 = px.scatter(data, x='X', y='Y', color='Category', title='Aun en desarrollo')
+                # Scatter plot using Plotly Express
+                fig4 = px.scatter(data, x='X', y='Y', color='Category', title='Aun en desarrollo')
 
-        #         fig4.update_layout(width=760, height=500)
+                fig4.update_layout(width=760, height=500)
 
-        #         fig4.update_layout(
-        #             plot_bgcolor='white',  # Background color of the plot area
-        #             paper_bgcolor='white'  # Background color of the entire figure
-        #         )
+                fig4.update_layout(
+                    plot_bgcolor='white',  # Background color of the plot area
+                    paper_bgcolor='white'  # Background color of the entire figure
+                )
 
-        #         st.plotly_chart(fig4)
+                st.plotly_chart(fig4)
 
-        # with col2:
+        with col2:
             
             
-        #     grafico2 = st.radio(
-        #         "Grafico a mostrar",
-        #         ["Histograma", "Dispersión"],
-        #         horizontal=True,
-        #     )
+            grafico2 = st.radio(
+                "Grafico a mostrar",
+                ["Histograma", "Dispersión"],
+                horizontal=True,
+            )
 
-        #     st.markdown('<hr>', unsafe_allow_html=True)
+            st.markdown('<hr>', unsafe_allow_html=True)
 
 
-        #     if grafico2=='Histograma':
+            if grafico2=='Histograma':
 
-        #         option2 = st.selectbox(
-        #             'WENAS',
-        #             ('MarcaModelo','Marca','Precio','Cilindrada','Estilo','Pasajeros','Combustible','Transmision','Estado','Kilometraje','Placa','Color ext','Color int','Puertas','Provincia','Grupo de años'))
+                option2 = st.selectbox(
+                    'WENAS',
+                    ('MarcaModelo','Marca','Precio','Cilindrada','Estilo','Pasajeros','Combustible','Transmision','Estado','Kilometraje','Placa','Color ext','Color int','Puertas','Provincia','Grupo de años'))
 
                 
 
-        #         # Create a sample DataFrame (replace this with your 'df' from the CSV)
-        #         data2 = {'values': df[option2].values}
-        #         df2 = pd.DataFrame(data2)
+                # Create a sample DataFrame (replace this with your 'df' from the CSV)
+                data2 = {'values': df[option2].values}
+                df2 = pd.DataFrame(data2)
 
-        #         # Create a histogram using Plotly Express
-        #         fig2 = px.histogram(df2, x='values', nbins=10, title='Histograma '+str(option2))
+                # Create a histogram using Plotly Express
+                fig2 = px.histogram(df2, x='values', nbins=10, title='Histograma '+str(option2))
 
-        #         fig2.update_layout(
-        #             plot_bgcolor='white',  # Background color of the plot area
-        #             paper_bgcolor='white'  # Background color of the entire figure
-        #         )
+                fig2.update_layout(
+                    plot_bgcolor='white',  # Background color of the plot area
+                    paper_bgcolor='white'  # Background color of the entire figure
+                )
                 
-        #         # Display the histogram in the Streamlit app
-        #         fig2.update_layout(width=760, height=500)
+                # Display the histogram in the Streamlit app
+                fig2.update_layout(width=760, height=500)
 
-        #         st.plotly_chart(fig2)
+                st.plotly_chart(fig2)
 
-        #     if grafico2=='Dispersión':
+            if grafico2=='Dispersión':
 
-        #         # Sample data
-        #         np.random.seed(42)
-        #         data = pd.DataFrame({
-        #             'X': np.random.rand(50),
-        #             'Y': np.random.rand(50),
-        #             'Category': np.random.choice(['A', 'B'], size=50)
-        #         })
+                # Sample data
+                np.random.seed(42)
+                data = pd.DataFrame({
+                    'X': np.random.rand(50),
+                    'Y': np.random.rand(50),
+                    'Category': np.random.choice(['A', 'B'], size=50)
+                })
 
-        #         # Scatter plot using Plotly Express
-        #         fig3 = px.scatter(data, x='X', y='Y', color='Category', title='Aun en desarrollo')
+                # Scatter plot using Plotly Express
+                fig3 = px.scatter(data, x='X', y='Y', color='Category', title='Aun en desarrollo')
 
-        #         fig3.update_layout(width=760, height=500)
+                fig3.update_layout(width=760, height=500)
 
 
-        #         fig3.update_layout(
-        #             plot_bgcolor='white',  # Background color of the plot area
-        #             paper_bgcolor='white'  # Background color of the entire figure
-        #         )
+                fig3.update_layout(
+                    plot_bgcolor='white',  # Background color of the plot area
+                    paper_bgcolor='white'  # Background color of the entire figure
+                )
 
-        #         st.plotly_chart(fig3)
+                st.plotly_chart(fig3)
         
     with st.expander("Potenciales Inversiones"):
 
