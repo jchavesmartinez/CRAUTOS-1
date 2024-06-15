@@ -759,7 +759,7 @@ def estadisticas_visuales(cars_historico):
         modelo['factor_km'] = 100-modelo['km_margen_median']
 
 
-        columns_to_count_indices = list(range(27, 42))
+        columns_to_count_indices = list(range(27, 52))
         # Add a new column 'yes_count' to store the count of 'yes' values across specified columns
         modelo['factor_extras'] = modelo.iloc[:, columns_to_count_indices].apply(lambda row: row.eq('SI').sum(), axis=1)
         #modelo['factor_extras']=modelo['factor_extras']/39*100
