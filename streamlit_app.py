@@ -482,7 +482,7 @@ def estadisticas_visuales(cars_historico):
         col3.metric("Carros totales", len(df['Marca']))
         col4.metric("Precio min", int(min(df['Precio'])))
         col5.metric("Precio promedio", int(df['Precio'].mean()))
-        col6.metric("Precio moda", int(df['Precio'].mode()))
+        col6.metric("Precio moda", int(df['Precio'].mode().iloc[0]))
         col7.metric("Mediana precio", int(df['Precio'].median()))
         col8.metric("Precio maximo", int(max(df['Precio'])))
         col9.metric("Desviacion estandar relativa", str(int((df['Precio'].std()/df['Precio'].mean())*100))+"%")
