@@ -65,10 +65,9 @@ def read_file_googledrive(credentials,file_id):
     return text_content
 
 
-
 #---------------------------- Funciones especificas --------------------------------
 
-@st.cache_data
+#@st.cache_data
 def limpiar_data():
     try:
     
@@ -179,7 +178,7 @@ def limpiar_data():
 
     return cars_historico
 
-@st.cache_data
+#@st.cache_data
 def agrupar_por_años(cars_historico):
 
     # Determine the minimum and maximum year
