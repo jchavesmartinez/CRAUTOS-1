@@ -761,8 +761,13 @@ def estadisticas_visuales(cars_historico):
 
 
         # Add a new column 'yes_count' to store the count of 'yes' values across specified columns
-        modelo['factor_extras'] = modelo.iloc[:, columns_to_count_indices].apply(lambda row: row.eq('SI').sum(), axis=1)
-        modelo['factor_extras']=modelo['factor_extras']/39*100
+
+        modelo = modelo.applymap(lambda x: x == "SI")
+
+        # Sum the True values for each row to get the count of "SI" values
+        modelo['factor_extras'] = modelo.sum(axis=1)
+
+        #modelo['factor_extras']=modelo['factor_extras']/39*100
 
         modelo['nota_final'] = (modelo['factor_marca']*0.35)+(modelo['factor_precio']*0.25)+(modelo['factor_año']*0.3)+(modelo['factor_km']*0.15)+(modelo['factor_extras']*0.05)
 
