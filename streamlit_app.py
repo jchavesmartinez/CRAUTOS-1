@@ -751,7 +751,7 @@ def estadisticas_visuales(cars_historico):
             return nota_precio
 
         
-        modelo['factor_marca']=modelo['Precio_count'].apply(asignar_nota_marca)
+        modelo['factor_muestra']=modelo['Precio_count'].apply(asignar_nota_marca)
         modelo['factor_precio'] = modelo.apply(asignar_nota_precio, axis=1)
         modelo['factor_año'] = 100 - (2024-modelo['Año'])
         modelo['factor_km'] = 100-modelo['km_margen_median']
@@ -762,7 +762,7 @@ def estadisticas_visuales(cars_historico):
         modelo['factor_extras'] = modelo.iloc[:, columns_to_count_indices].apply(lambda row: row.eq('SI').sum(), axis=1)
         #modelo['factor_extras']=modelo['factor_extras']/39*100
 
-        modelo['nota_final'] = (modelo['factor_marca']*0.35)+(modelo['factor_precio']*0.25)+(modelo['factor_año']*0.3)+(modelo['factor_km']*0.15)+(modelo['factor_extras']*0.05)
+        modelo['nota_final'] = (modelo['factor_muestra']*0.35)+(modelo['factor_precio']*0.25)+(modelo['factor_año']*0.3)+(modelo['factor_km']*0.15)+(modelo['factor_extras']*0.05)
 
         modelo = modelo[modelo['nota_final'] > nota_final_minima]
 
