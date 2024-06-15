@@ -192,8 +192,6 @@ def estadisticas_visuales(cars_historico):
     
     with st.expander("Menu de filtros"):
 
-        st.write(cars_historico)
-
         dynamic_filters = DynamicFilters(cars_historico, filters=['Marca','Cilindrada', 'Estado','Transmision','MarcaModelo','Combustible', 'Color exterior','Placa','Estilo','Pasajeros', 'Color interior','Puertas'])
         dynamic_filters.display_filters(location='columns', num_columns=2)
 
@@ -232,7 +230,6 @@ def estadisticas_visuales(cars_historico):
             st.write(e)
             st.write('Solo existe un elemento, no es posible filtrar más el precio')
              
-
         try:
             df['Kilometraje'] = pd.to_numeric(df['Kilometraje'], errors='coerce').astype('Int64')
             # Ensure there are no NaN values in 'Kilometraje' column
