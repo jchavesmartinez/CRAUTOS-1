@@ -502,6 +502,8 @@ def estadisticas_visuales(cars_historico):
 
             st.markdown('<hr>', unsafe_allow_html=True)
 
+            grafico1='Histograma'
+
 
             if grafico1=='Histograma':
 
