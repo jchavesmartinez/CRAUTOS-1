@@ -590,6 +590,7 @@ def estadisticas_visuales(cars_historico):
         #         st.plotly_chart(fig3)
         
 
+"a"
 
 
 
