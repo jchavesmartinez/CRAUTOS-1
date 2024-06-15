@@ -183,16 +183,16 @@ def limpiar_data():
 
 def estadisticas_visuales(cars_historico):
 
-    cars_historico = cars_historico.astype(str)
+    df = cars_historico.astype(str)
     
-    modelo=cars_historico.copy()
+    modelo=df.copy()
 
     filters = {}
-    filtered_df = cars_historico.copy()
+    filtered_df = df.copy()
     
     with st.expander("Menu de filtros"):
 
-        dynamic_filters = DynamicFilters(cars_historico, filters=['Marca','Cilindrada', 'Estado','Transmision','MarcaModelo','Combustible', 'Color exterior','Placa','Estilo','Pasajeros', 'Color interior','Puertas'])
+        dynamic_filters = DynamicFilters(df, filters=['Marca','Cilindrada', 'Estado','Transmision','MarcaModelo','Combustible', 'Color exterior','Placa','Estilo','Pasajeros', 'Color interior','Puertas'])
         dynamic_filters.display_filters(location='columns', num_columns=2)
 
         df=dynamic_filters.filter_df()
