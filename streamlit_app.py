@@ -769,7 +769,7 @@ def estadisticas_visuales(cars_historico):
 
 
         #modelo['factor_extras'] = modelo.iloc[:, columns_to_count_indices].apply(lambda row: row.eq('SI').sum(), axis=1)
-        modelo['factor_extras']=modelo['factor_extras']/39*100
+        #modelo['factor_extras']=modelo['factor_extras']/39*100
 
         modelo['nota_final'] = (modelo['factor_marca']*0.35)+(modelo['factor_precio']*0.25)+(modelo['factor_año']*0.3)+(modelo['factor_km']*0.15)+(modelo['factor_extras']*0.05)
 
