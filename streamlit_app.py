@@ -642,8 +642,6 @@ def estadisticas_visuales(cars_historico):
         modelo['Kilometraje'] = pd.to_numeric(modelo['Kilometraje'], errors='coerce').astype('float')
         modelo['Año'] = pd.to_numeric(modelo['Año'], errors='coerce').astype('float')
 
-        st.write(modelo)
-
         modelo = df.groupby(['Marca', 'MarcaModelo', 'Grupo de años']).agg({'Año': 'mean','Kilometraje':['mean','median'], 'Precio': ['mean', 'count','median','std']}).reset_index()
         modelo.columns = ['Marca', 'MarcaModelo', 'Grupo de años', 'Año_mean','KM_mean','KM_median', 'Precio_mean', 'Precio_count', 'Precio_median','Precio_std']
         modelo['Precio_relativestd']=modelo['Precio_std']/modelo['Precio_mean']*100
