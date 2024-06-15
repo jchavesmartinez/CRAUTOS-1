@@ -454,7 +454,8 @@ def estadisticas_visuales(cars_historico):
             df = filtered_df[filtered_df[column] == value]
 
         st.write(filters)
-        st.write(df)      
+        st.write(df)
+        st.write(len(df))      
 
 
         
