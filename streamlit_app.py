@@ -204,8 +204,6 @@ def agrupar_por_años(cars_historico):
     # Apply the function to create a new column
     cars_historico["Grupo de años"] = cars_historico['Año'].apply(assign_year_group)
 
-    st.write(cars_historico)
-
     return cars_historico
 
 def estadisticas_visuales(cars_historico):
