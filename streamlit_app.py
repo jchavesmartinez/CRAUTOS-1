@@ -759,7 +759,7 @@ def estadisticas_visuales(cars_historico):
         modelo['factor_km'] = 100-modelo['km_margen_median']
 
 
-        columns_to_count_indices = list(range(0, 6))
+
         # Add a new column 'yes_count' to store the count of 'yes' values across specified columns
         modelo['factor_extras'] = modelo.iloc[:, columns_to_count_indices].apply(lambda row: row.eq('SI').sum(), axis=1)
         modelo['factor_extras']=modelo['factor_extras']/39*100
@@ -770,8 +770,7 @@ def estadisticas_visuales(cars_historico):
 
         modelo = modelo[modelo['Precio'] <= precio_maximo]
 
-        #columns_to_drop = [1, 3]  # Columns 'B' and 'D' by index
-        modelo = modelo.drop(modelo.columns[columns_to_count_indices], axis=1)
+
         #modelo = modelo.drop(columns=['Color ext', 'Color int','Puertas','Libre impuestos','Negociable','Recibe','Provincia','Traspaso','Vehiculo_ID','Fecha ingreso','Visualizaciones','MarcaModelo_modelo_completo','Moneda','Marca_modelo_completo',
         #                                'Extraccion Dia','Grupo de años_modelo_completo','grupo_id','Visuales por Dia','Año_mean','Grupo de años_modelo','Estado','KM_mean','Precio_mean','Precio_std','precio_margen_mean','precio_margen_median','Precio_relativestd',
         #                                'km_margen_mean','km_margen_median','precio_margen_mean%','precio_margen_median%'])
