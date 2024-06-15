@@ -180,7 +180,33 @@ def limpiar_data():
     return cars_historico
 
 def agrupar_por_años(cars_historico):
+
+    # Determine the minimum and maximum year
+    min_year = cars_historico['Año'].min()
+    max_year = cars_historico['Año'].max()
+
+    # Create a list of year groups
+    year_groups = []
+    current_year = min_year
+    while current_year <= max_year:
+        end_year = current_year + 2
+        year_groups.append((current_year, end_year))
+        current_year += 3
+
+    # Define a function to assign the year group
+    def assign_year_group(year):
+        for start, end in year_groups:
+            if start <= year <= end:
+                return f'{start}-{end}'
+        return None
+
+    # Apply the function to create a new column
+    cars_historico["Grupo de años"] = cars_historico['Año'].apply(assign_year_group)
+
     st.write(cars_historico)
+
+    return cars_historico
+
 
 def estadisticas_visuales(cars_historico):
 
