@@ -755,7 +755,7 @@ def estadisticas_visuales(cars_historico):
         
         modelo['factor_marca']=modelo['Precio_count'].apply(asignar_nota_marca)
         modelo['factor_precio'] = modelo.apply(asignar_nota_precio, axis=1)
-        modelo['factor_año'] = 100 - (2023-modelo['Año'])
+        modelo['factor_año'] = 100 - (2024-modelo['Año'])
         modelo['factor_km'] = 100-modelo['km_margen_median']
 
 
