@@ -494,11 +494,11 @@ def estadisticas_visuales(cars_historico):
 
         with col1:
 
-            grafico1 = st.radio(
-                "Grafico a mostrar ",
-                ["Histograma", "Dispersión"],
-                horizontal=True,
-            )
+            # grafico1 = st.radio(
+            #     "Grafico a mostrar ",
+            #     ["Histograma", "Dispersión"],
+            #     horizontal=True,
+            # )
 
             st.markdown('<hr>', unsafe_allow_html=True)
 
