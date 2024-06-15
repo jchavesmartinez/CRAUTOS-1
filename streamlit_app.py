@@ -179,6 +179,7 @@ def limpiar_data():
 
     return cars_historico
 
+@st.cache_data
 def agrupar_por_años(cars_historico):
 
     # Determine the minimum and maximum year
