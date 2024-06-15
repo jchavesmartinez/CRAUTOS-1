@@ -251,7 +251,7 @@ def estadisticas_visuales(cars_historico):
         colfiltros6, colfiltros7, colfiltros8 , colfiltros9, colfiltros10, colfiltros11, colfiltros12, colfiltros13 = st.columns([1, 1, 1, 1, 1, 1 , 1, 1])
 
         with colfiltros6:
-            genre1 = st.radio("Dirección hidráulica",["Sin filtro", "Si", "No"])
+            genre1 = st.radio("Dirección hidráulica",["Sin filtro", "SI", "NO"])
             genre2 = st.radio("Vidrios eléctricos",["Sin filtro", "Si", "No"])
             genre3 = st.radio("Volante ajustable",["Sin filtro", "Si", "No"])
             genre4 = st.radio("Luces de Xenón/Bixenón",["Sin filtro", "Si", "No"])
