@@ -776,7 +776,7 @@ def estadisticas_visuales(cars_historico):
         #                                'Extraccion Dia','Grupo de años_modelo_completo','grupo_id','Visuales por Dia','Año_mean','Grupo de años_modelo','Estado','KM_mean','Precio_mean','Precio_std','precio_margen_mean','precio_margen_median','Precio_relativestd',
         #                                'km_margen_mean','km_margen_median','precio_margen_mean%','precio_margen_median%'])
 
-        modelo = modelo[['Marca_modelo', 'MarcaModelo_modelo','Combustible','Transmision','Estilo','Cilindrada','Año', 'Precio','Precio_median','Kilometraje','KM_median','Precio_count','nota_final','factor_marca','factor_precio','factor_año','factor_km','factor_extras','Comentarios','Pagina Web']]
+        #modelo = modelo[['Marca_modelo', 'MarcaModelo_modelo','Combustible','Transmision','Estilo','Cilindrada','Año', 'Precio','Precio_median','Kilometraje','KM_median','Precio_count','nota_final','factor_marca','factor_precio','factor_año','factor_km','factor_extras','Comentarios','Pagina Web']]
         st.dataframe(modelo)
 
 
