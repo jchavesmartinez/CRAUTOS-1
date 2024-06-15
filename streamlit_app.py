@@ -231,12 +231,20 @@ def estadisticas_visuales(cars_historico):
         except Exception as e:
             st.write(e)
             st.write('Solo existe un elemento, no es posible filtrar más el precio')
-            
-        
+             
+
         try:
-        
-            kmfiltro = st.slider('Kilometros', int(min(df['Kilometraje'])), int(max(df['Kilometraje']))+1, (int(min(df['Kilometraje'])),int(max(df['Kilometraje']))+1), step=10000)
-            df=df[(df['Kilometraje'] >= list(kmfiltro)[0]) & (df['Kilometraje'] <= list(kmfiltro)[1])]
+            df['Kilometraje'] = pd.to_numeric(df['Kilometraje'], errors='coerce').astype('Int64')
+            # Ensure there are no NaN values in 'Kilometraje' column
+            df = df.dropna(subset=['Kilometraje'])
+
+            # Create the slider for selecting the kilometers range
+            kmfiltro = st.slider('Kilometros', int(min(df['Kilometraje'])), int(max(df['Kilometraje'])) + 1, 
+                                (int(min(df['Kilometraje'])), int(max(df['Kilometraje'])) + 1), step=10000)
+
+            # Filter the DataFrame based on the selected range
+            df = df[(df['Kilometraje'] >= kmfiltro[0]) & (df['Kilometraje'] <= kmfiltro[1])]
+
         except Exception as e:
             st.write(e)
             st.write('Solo existe un elemento, no es posible filtrar más el kilometraje')
