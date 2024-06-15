@@ -252,10 +252,10 @@ def estadisticas_visuales(cars_historico):
 
         with colfiltros6:
             genre1 = st.radio("Dirección hidráulica",["Sin filtro", "SI", "NO"])
-            genre2 = st.radio("Vidrios eléctricos",["Sin filtro", "Si", "No"])
-            genre3 = st.radio("Volante ajustable",["Sin filtro", "Si", "No"])
-            genre4 = st.radio("Luces de Xenón/Bixenón",["Sin filtro", "Si", "No"])
-            genre5 = st.radio("Sensores frontales",["Sin filtro", "Si", "No"])
+            genre2 = st.radio("Vidrios eléctricos",["Sin filtro", "SI", "NO"])
+            genre3 = st.radio("Volante ajustable",["Sin filtro", "SI", "NO"])
+            genre4 = st.radio("Luces de Xenón/Bixenón",["Sin filtro", "SI", "NO"])
+            genre5 = st.radio("Sensores frontales",["Sin filtro", "SI", "NO"])
 
             if genre1 != "Sin filtro":
                 filters["Dirección hidráulica"] = genre1
@@ -276,11 +276,11 @@ def estadisticas_visuales(cars_historico):
 
         with colfiltros7:        
             
-            genre6 = st.radio("Aros de lujo",["Sin filtro", "Si", "No"])
-            genre7 = st.radio("Bluetooth",["Sin filtro", "Si", "No"])
-            genre8 = st.radio("Control de radio en el volante",["Sin filtro", "Si", "No"])
-            genre9 = st.radio("Asiento con memoria",["Sin filtro", "Si", "No"])
-            genre10 = st.radio("Vidrios tintados",["Sin filtro", "Si", "No"])
+            genre6 = st.radio("Aros de lujo",["Sin filtro", "SI", "NO"])
+            genre7 = st.radio("Bluetooth",["Sin filtro", "SI", "NO"])
+            genre8 = st.radio("Control de radio en el volante",["Sin filtro", "SI", "NO"])
+            genre9 = st.radio("Asiento con memoria",["Sin filtro", "SI", "NO"])
+            genre10 = st.radio("Vidrios tintados",["Sin filtro", "SI", "NO"])
 
             if genre6 != "Sin filtro":
                 filters["Aros de lujo"] = genre6
@@ -301,11 +301,11 @@ def estadisticas_visuales(cars_historico):
 
         with colfiltros8:
             
-            genre11 = st.radio("Tapicería de cuero",["Sin filtro", "Si", "No"])
-            genre12 = st.radio("Aire acondicionado climatizado",["Sin filtro", "Si", "No"])
-            genre13 = st.radio("Llave inteligente/botón de arranque",["Sin filtro", "Si", "No"])
-            genre14 = st.radio("Sensor de lluvia",["Sin filtro", "Si", "No"])
-            genre15 = st.radio("Aire acondicionado",["Sin filtro", "Si", "No"])
+            genre11 = st.radio("Tapicería de cuero",["Sin filtro", "SI", "NO"])
+            genre12 = st.radio("Aire acondicionado climatizado",["Sin filtro", "SI", "NO"])
+            genre13 = st.radio("Llave inteligente/botón de arranque",["Sin filtro", "SI", "NO"])
+            genre14 = st.radio("Sensor de lluvia",["Sin filtro", "SI", "NO"])
+            genre15 = st.radio("Aire acondicionado",["Sin filtro", "SI", "NO"])
 
             if genre11 != "Sin filtro":
                 filters["Tapicería de cuero"] = genre11
@@ -326,11 +326,11 @@ def estadisticas_visuales(cars_historico):
 
         with colfiltros9:
             
-            genre16 = st.radio("Cassette",["Sin filtro", "Si", "No"])
-            genre17 = st.radio("Frenos ABS",["Sin filtro", "Si", "No"])
-            genre18 = st.radio("Control electrónico de estabilidad",["Sin filtro", "Si", "No"])
-            genre19 = st.radio("Monitor de presión de llantas",["Sin filtro", "Si", "No"])
-            genre20 = st.radio("Disco compacto",["Sin filtro", "Si", "No"])
+            genre16 = st.radio("Cassette",["Sin filtro", "SI", "NO"])
+            genre17 = st.radio("Frenos ABS",["Sin filtro", "SI", "NO"])
+            genre18 = st.radio("Control electrónico de estabilidad",["Sin filtro", "SI", "NO"])
+            genre19 = st.radio("Monitor de presión de llantas",["Sin filtro", "SI", "NO"])
+            genre20 = st.radio("Disco compacto",["Sin filtro", "SI", "NO"])
 
             if genre16 != "Sin filtro":
                 filters["Cassette"] = genre16
@@ -351,11 +351,11 @@ def estadisticas_visuales(cars_historico):
 
         with colfiltros10:
             
-            genre21 = st.radio("Bolsa de aire",["Sin filtro", "Si", "No"])
-            genre22 = st.radio("Sunroof/techo panorámico",["Sin filtro", "Si", "No"])
-            genre23 = st.radio("Control de descenso",["Sin filtro", "Si", "No"])
-            genre24 = st.radio("Computadora de viaje",["Sin filtro", "Si", "No"])
-            genre25 = st.radio("Radio con USB/AUX",["Sin filtro", "Si", "No"])
+            genre21 = st.radio("Bolsa de aire",["Sin filtro", "SI", "NO"])
+            genre22 = st.radio("Sunroof/techo panorámico",["Sin filtro", "SI", "NO"])
+            genre23 = st.radio("Control de descenso",["Sin filtro", "SI", "NO"])
+            genre24 = st.radio("Computadora de viaje",["Sin filtro", "SI", "NO"])
+            genre25 = st.radio("Radio con USB/AUX",["Sin filtro", "SI", "NO"])
 
             if genre21 != "Sin filtro":
                 filters["Bolsa de aire"] = genre21
@@ -376,11 +376,11 @@ def estadisticas_visuales(cars_historico):
 
         with colfiltros11:
             
-            genre26 = st.radio("Alarma",["Sin filtro", "Si", "No"])
-            genre27 = st.radio("Cámara de retroceso",["Sin filtro", "Si", "No"])
-            genre28 = st.radio("Caja de cambios dual",["Sin filtro", "Si", "No"])
-            genre29 = st.radio("Retrovisores auto-retractibles",["Sin filtro", "Si", "No"])
-            genre30 = st.radio("Revisión Técnica al día",["Sin filtro", "Si", "No"])
+            genre26 = st.radio("Alarma",["Sin filtro", "SI", "NO"])
+            genre27 = st.radio("Cámara de retroceso",["Sin filtro", "SI", "NO"])
+            genre28 = st.radio("Caja de cambios dual",["Sin filtro", "SI", "NO"])
+            genre29 = st.radio("Retrovisores auto-retractibles",["Sin filtro", "SI", "NO"])
+            genre30 = st.radio("Revisión Técnica al día",["Sin filtro", "SI", "NO"])
 
             if genre26 != "Sin filtro":
                 filters["Alarma"] = genre26
@@ -401,11 +401,11 @@ def estadisticas_visuales(cars_historico):
 
         with colfiltros12:
             
-            genre31 = st.radio("Espejos eléctricos",["Sin filtro", "Si", "No"])
-            genre32 = st.radio("Desempañador Trasero",["Sin filtro", "Si", "No"])
-            genre33 = st.radio("Sensores de retroceso",["Sin filtro", "Si", "No"])
-            genre34 = st.radio("Turbo",["Sin filtro", "Si", "No"])
-            genre35 = st.radio("Cierre central",["Sin filtro", "Si", "No"])
+            genre31 = st.radio("Espejos eléctricos",["Sin filtro", "SI", "NO"])
+            genre32 = st.radio("Desempañador Trasero",["Sin filtro", "SI", "NO"])
+            genre33 = st.radio("Sensores de retroceso",["Sin filtro", "SI", "NO"])
+            genre34 = st.radio("Turbo",["Sin filtro", "SI", "NO"])
+            genre35 = st.radio("Cierre central",["Sin filtro", "SI", "NO"])
 
             if genre31 != "Sin filtro":
                 filters["Espejos eléctricos"] = genre31
@@ -426,10 +426,10 @@ def estadisticas_visuales(cars_historico):
 
         with colfiltros13:
             
-            genre36 = st.radio("Control crucero",["Sin filtro", "Si", "No"])
-            genre37 = st.radio("Halógenos",["Sin filtro", "Si", "No"])
-            genre38 = st.radio("Volante multifuncional",["Sin filtro", "Si", "No"])
-            genre39 = st.radio("Asientos eléctricos",["Sin filtro", "Si", "No"])
+            genre36 = st.radio("Control crucero",["Sin filtro", "SI", "NO"])
+            genre37 = st.radio("Halógenos",["Sin filtro", "SI", "NO"])
+            genre38 = st.radio("Volante multifuncional",["Sin filtro", "SI", "NO"])
+            genre39 = st.radio("Asientos eléctricos",["Sin filtro", "SI", "NO"])
 
             if genre36 != "Sin filtro":
                 filters["Control crucero"] = genre36
