@@ -199,8 +199,6 @@ def estadisticas_visuales(cars_historico):
 
         df=dynamic_filters.filter_df()
 
-        st.write(df)
-
         st.markdown('<hr>', unsafe_allow_html=True)
 
         try:
@@ -458,7 +456,7 @@ def estadisticas_visuales(cars_historico):
         for column, value in filters.items():
             df = filtered_df[filtered_df[column] == value]
 
-        st.write(df)      
+        st.write(filters)      
 
 
         
