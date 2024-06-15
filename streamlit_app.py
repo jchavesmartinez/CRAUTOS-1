@@ -760,7 +760,7 @@ def estadisticas_visuales(cars_historico):
         columns_to_count_indices = list(range(27, 66))
         # Add a new column 'yes_count' to store the count of 'yes' values across specified columns
         modelo['factor_extras'] = modelo.iloc[:, columns_to_count_indices].apply(lambda row: row.eq('SI').sum(), axis=1)
-        #modelo['factor_extras']=modelo['factor_extras']/39*100
+        modelo['factor_extras']=modelo['factor_extras']/39*100
 
         modelo['nota_final'] = (modelo['factor_muestra']*0.35)+(modelo['factor_precio']*0.25)+(modelo['factor_año']*0.3)+(modelo['factor_km']*0.15)+(modelo['factor_extras']*0.05)
 
@@ -775,7 +775,7 @@ def estadisticas_visuales(cars_historico):
         #                                'km_margen_mean','km_margen_median','precio_margen_mean%','precio_margen_median%'])
 
         st.dataframe(modelo)
-        modelo = modelo[['URL', 'Marca_modelo_completo','MarcaModelo_modelo_completo','Año','Precio', 'Kilometraje', 'factor_muestra', 'factor_precio', 'factor_km', 'factor_extras']]
+        modelo = modelo[['URL', 'Marca_modelo_completo','MarcaModelo_modelo_completo','Año','Precio', 'Kilometraje', 'factor_muestra', 'factor_precio', 'factor_km', 'factor_extras', 'nota_final']]
         st.dataframe(modelo)
         
 
