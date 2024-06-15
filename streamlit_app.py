@@ -613,181 +613,185 @@ def estadisticas_visuales(cars_historico):
         
     with st.expander("Potenciales Inversiones"):
 
-        col1_a, col2_a, col3_a = st.columns(3)
+        try:
+            col1_a, col2_a, col3_a = st.columns(3)
 
-        with col1_a:
+            with col1_a:
 
-            precio_descuento = st.number_input('% Descuento sobre el precio',0,100,10)
-            precio_descuento=precio_descuento/100
-            km_descuento = st.number_input('% Descuento sobre el kilometraje',0,100,10)
-            km_descuento=km_descuento
+                precio_descuento = st.number_input('% Descuento sobre el precio',0,100,10)
+                precio_descuento=precio_descuento/100
+                km_descuento = st.number_input('% Descuento sobre el kilometraje',0,100,10)
+                km_descuento=km_descuento
 
-        with col2_a:
+            with col2_a:
 
-            muestra_tamaño = st.number_input('Tamaño minimo de la muestra',0,10000000000,5)
-            nota_final_minima = st.number_input('Nota final minima',0,100,80)
+                muestra_tamaño = st.number_input('Tamaño minimo de la muestra',0,10000000000,5)
+                nota_final_minima = st.number_input('Nota final minima',0,100,80)
 
-        with col3_a:
-            precio_minimo = st.number_input('Precio piso',0,10000000000,700000)
-            precio_maximo = st.number_input('Precio techo',0,10000000000,10000000)
-
-
-        modelo_completo=modelo
-        modelo_completo["grupo_id"] = modelo_completo["Marca"].astype(str) + modelo_completo["MarcaModelo"].astype(str) + modelo_completo["Grupo de años"].astype(str)
-
-        modelo['Precio'] = pd.to_numeric(modelo['Precio'], errors='coerce').astype('float')
-        modelo['Kilometraje'] = pd.to_numeric(modelo['Kilometraje'], errors='coerce').astype('float')
-        modelo['Año'] = pd.to_numeric(modelo['Año'], errors='coerce').astype('float')
-
-        modelo = df.groupby(['Marca', 'MarcaModelo', 'Grupo de años']).agg({'Año': 'mean','Kilometraje':['mean','median'], 'Precio': ['mean', 'count','median','std']}).reset_index()
-        modelo.columns = ['Marca', 'MarcaModelo', 'Grupo de años', 'Año_mean','KM_mean','KM_median', 'Precio_mean', 'Precio_count', 'Precio_median','Precio_std']
-        modelo['Precio_relativestd']=modelo['Precio_std']/modelo['Precio_mean']*100
-        modelo = modelo[modelo['Precio_count'] >= muestra_tamaño]
-        modelo["grupo_id"] = modelo["Marca"].astype(str) + modelo["MarcaModelo"].astype(str) + modelo["Grupo de años"].astype(str)
-
-                # Assuming df1 and df2 are your two DataFrames, and 'common_column' is the column you want to use for merging.
-        modelo = pd.merge(modelo_completo, modelo, on='grupo_id', suffixes=('_modelo_completo', '_modelo'))
-
-        # Drop duplicate columns
-        modelo = modelo.loc[:, ~modelo.columns.duplicated()]
-        modelo['precio_margen_mean']=modelo['Precio']/modelo['Precio_mean']
-        modelo['precio_margen_median']=modelo['Precio']/modelo['Precio_median']
-
-        modelo = modelo[modelo['precio_margen_mean'] < 1-precio_descuento]
-        modelo = modelo[modelo['precio_margen_median'] < 1-precio_descuento]
-
-        modelo['precio_margen_mean']=modelo['Precio_mean']-modelo['Precio']
-        modelo['precio_margen_median']=modelo['Precio_median']-modelo['Precio']
-
-        modelo = modelo[modelo['precio_margen_mean'] >= precio_minimo]
-        modelo = modelo[modelo['precio_margen_median'] >= precio_minimo]
-
-        modelo['km_margen_mean']=modelo['Kilometraje']/modelo['KM_mean']*100
-        modelo['km_margen_median']=modelo['Kilometraje']/modelo['KM_median']*100
-
-        modelo = modelo[modelo['km_margen_mean'] < 100-km_descuento]
-        modelo = modelo[modelo['km_margen_median'] < 100-km_descuento]
-        modelo = modelo[modelo['km_margen_mean'] > 0.1]
-
-        modelo['precio_margen_mean%']=modelo['Precio']/modelo['Precio_mean']*100
-        modelo['precio_margen_median%']=modelo['Precio']/modelo['Precio_median']*100
+            with col3_a:
+                precio_minimo = st.number_input('Precio piso',0,10000000000,700000)
+                precio_maximo = st.number_input('Precio techo',0,10000000000,10000000)
 
 
-        def asignar_nota_marca(valor):
-            if valor > 100:
-                return 100
-            elif 60 <= valor <= 100:
-                return 90
-            elif 30 <= valor < 60:
-                return 80
-            elif 15 <= valor < 30:
-                return 60
-            elif 5 <= valor < 15:
-                return 40
-            else:
-                return None 
+            modelo_completo=modelo
+            modelo_completo["grupo_id"] = modelo_completo["Marca"].astype(str) + modelo_completo["MarcaModelo"].astype(str) + modelo_completo["Grupo de años"].astype(str)
 
-        def asignar_nota_precio(row):
-            mean_porcentual = row['precio_margen_mean%']
-            if mean_porcentual < 60:
-                factor_mean= 100
-            elif 60 <= mean_porcentual <= 75:
-                factor_mean= 90
-            elif 75 <= mean_porcentual < 85:
-                factor_mean= 80
-            elif 85 <= mean_porcentual < 95:
-                factor_mean= 60
-            elif 95 <= mean_porcentual < 100:
-                factor_mean= 40
+            modelo['Precio'] = pd.to_numeric(modelo['Precio'], errors='coerce').astype('float')
+            modelo['Kilometraje'] = pd.to_numeric(modelo['Kilometraje'], errors='coerce').astype('float')
+            modelo['Año'] = pd.to_numeric(modelo['Año'], errors='coerce').astype('float')
 
+            modelo = df.groupby(['Marca', 'MarcaModelo', 'Grupo de años']).agg({'Año': 'mean','Kilometraje':['mean','median'], 'Precio': ['mean', 'count','median','std']}).reset_index()
+            modelo.columns = ['Marca', 'MarcaModelo', 'Grupo de años', 'Año_mean','KM_mean','KM_median', 'Precio_mean', 'Precio_count', 'Precio_median','Precio_std']
+            modelo['Precio_relativestd']=modelo['Precio_std']/modelo['Precio_mean']*100
+            modelo = modelo[modelo['Precio_count'] >= muestra_tamaño]
+            modelo["grupo_id"] = modelo["Marca"].astype(str) + modelo["MarcaModelo"].astype(str) + modelo["Grupo de años"].astype(str)
 
-            median_porcentual = row['precio_margen_median%']
-            if median_porcentual < 60:
-                factor_median= 100
-            elif 60 <= median_porcentual <= 75:
-                factor_median= 90
-            elif 75 <= median_porcentual < 85:
-                factor_median= 80
-            elif 85 <= median_porcentual < 95:
-                factor_median= 60
-            elif 95 <= median_porcentual < 100:
-                factor_median= 40
+                    # Assuming df1 and df2 are your two DataFrames, and 'common_column' is the column you want to use for merging.
+            modelo = pd.merge(modelo_completo, modelo, on='grupo_id', suffixes=('_modelo_completo', '_modelo'))
 
-            mean_dinero = row['precio_margen_mean']
-            if mean_dinero > 2000000:
-                factor_mean_dinero= 100
-            elif 1000000 <= mean_dinero <= 2000000:
-                factor_mean_dinero= 90
-            elif 700000 <= mean_dinero < 1000000:
-                factor_mean_dinero= 80
-            elif 300000 <= mean_dinero < 700000:
-                factor_mean_dinero= 60
-            elif 0 <= mean_dinero < 300000:
-                factor_mean_dinero= 40
-            else:
-                factor_mean_dinero= 0
+            # Drop duplicate columns
+            modelo = modelo.loc[:, ~modelo.columns.duplicated()]
+            modelo['precio_margen_mean']=modelo['Precio']/modelo['Precio_mean']
+            modelo['precio_margen_median']=modelo['Precio']/modelo['Precio_median']
 
-            median_dinero = row['precio_margen_median']
-            if median_dinero > 2000000:
-                factor_median_dinero= 100
-            elif 1000000 <= median_dinero <= 2000000:
-                factor_median_dinero= 90
-            elif 700000 <= median_dinero < 1000000:
-                factor_median_dinero= 80
-            elif 350000 <= median_dinero < 700000:
-                factor_median_dinero= 60
-            elif 0 <= median_dinero < 350000:
-                factor_median_dinero= 40
-            else:
-                factor_median_dinero= 0
+            modelo = modelo[modelo['precio_margen_mean'] < 1-precio_descuento]
+            modelo = modelo[modelo['precio_margen_median'] < 1-precio_descuento]
 
-            nota_relativestd= 100-row['Precio_relativestd']
+            modelo['precio_margen_mean']=modelo['Precio_mean']-modelo['Precio']
+            modelo['precio_margen_median']=modelo['Precio_median']-modelo['Precio']
 
-            nota_precio=(factor_mean*0.1)+(factor_mean_dinero*0.1)+(factor_median*0.2)+(factor_median_dinero*0.2)+(nota_relativestd*0.4)
+            modelo = modelo[modelo['precio_margen_mean'] >= precio_minimo]
+            modelo = modelo[modelo['precio_margen_median'] >= precio_minimo]
 
-            return nota_precio
+            modelo['km_margen_mean']=modelo['Kilometraje']/modelo['KM_mean']*100
+            modelo['km_margen_median']=modelo['Kilometraje']/modelo['KM_median']*100
+
+            modelo = modelo[modelo['km_margen_mean'] < 100-km_descuento]
+            modelo = modelo[modelo['km_margen_median'] < 100-km_descuento]
+            modelo = modelo[modelo['km_margen_mean'] > 0.1]
+
+            modelo['precio_margen_mean%']=modelo['Precio']/modelo['Precio_mean']*100
+            modelo['precio_margen_median%']=modelo['Precio']/modelo['Precio_median']*100
 
 
-        modelo['factor_muestra']=modelo['Precio_count'].apply(asignar_nota_marca)
-        modelo['factor_precio'] = modelo.apply(asignar_nota_precio, axis=1)
-        modelo['factor_año'] = 100 - (2024-modelo['Año'])
-        modelo['factor_km'] = 100-modelo['km_margen_median']
+            def asignar_nota_marca(valor):
+                if valor > 100:
+                    return 100
+                elif 60 <= valor <= 100:
+                    return 90
+                elif 30 <= valor < 60:
+                    return 80
+                elif 15 <= valor < 30:
+                    return 60
+                elif 5 <= valor < 15:
+                    return 40
+                else:
+                    return None 
+
+            def asignar_nota_precio(row):
+                mean_porcentual = row['precio_margen_mean%']
+                if mean_porcentual < 60:
+                    factor_mean= 100
+                elif 60 <= mean_porcentual <= 75:
+                    factor_mean= 90
+                elif 75 <= mean_porcentual < 85:
+                    factor_mean= 80
+                elif 85 <= mean_porcentual < 95:
+                    factor_mean= 60
+                elif 95 <= mean_porcentual < 100:
+                    factor_mean= 40
 
 
-        columns_to_count_indices = list(range(27, 66))
-        # Add a new column 'yes_count' to store the count of 'yes' values across specified columns
-        modelo['factor_extras'] = modelo.iloc[:, columns_to_count_indices].apply(lambda row: row.eq('SI').sum(), axis=1)
-        modelo['factor_extras']=modelo['factor_extras']/39*100
+                median_porcentual = row['precio_margen_median%']
+                if median_porcentual < 60:
+                    factor_median= 100
+                elif 60 <= median_porcentual <= 75:
+                    factor_median= 90
+                elif 75 <= median_porcentual < 85:
+                    factor_median= 80
+                elif 85 <= median_porcentual < 95:
+                    factor_median= 60
+                elif 95 <= median_porcentual < 100:
+                    factor_median= 40
 
-        modelo['nota_final'] = (modelo['factor_muestra']*0.35)+(modelo['factor_precio']*0.25)+(modelo['factor_año']*0.3)+(modelo['factor_km']*0.15)+(modelo['factor_extras']*0.05)
+                mean_dinero = row['precio_margen_mean']
+                if mean_dinero > 2000000:
+                    factor_mean_dinero= 100
+                elif 1000000 <= mean_dinero <= 2000000:
+                    factor_mean_dinero= 90
+                elif 700000 <= mean_dinero < 1000000:
+                    factor_mean_dinero= 80
+                elif 300000 <= mean_dinero < 700000:
+                    factor_mean_dinero= 60
+                elif 0 <= mean_dinero < 300000:
+                    factor_mean_dinero= 40
+                else:
+                    factor_mean_dinero= 0
 
-        modelo = modelo[modelo['nota_final'] > nota_final_minima]
+                median_dinero = row['precio_margen_median']
+                if median_dinero > 2000000:
+                    factor_median_dinero= 100
+                elif 1000000 <= median_dinero <= 2000000:
+                    factor_median_dinero= 90
+                elif 700000 <= median_dinero < 1000000:
+                    factor_median_dinero= 80
+                elif 350000 <= median_dinero < 700000:
+                    factor_median_dinero= 60
+                elif 0 <= median_dinero < 350000:
+                    factor_median_dinero= 40
+                else:
+                    factor_median_dinero= 0
 
-        modelo = modelo[modelo['Precio'] <= precio_maximo]
+                nota_relativestd= 100-row['Precio_relativestd']
 
-        #columns_to_drop = [1, 3]  # Columns 'B' and 'D' by index
-        modelo = modelo.drop(modelo.columns[columns_to_count_indices], axis=1)
-        #modelo = modelo.drop(columns=['Color ext', 'Color int','Puertas','Libre impuestos','Negociable','Recibe','Provincia','Traspaso','Vehiculo_ID','Fecha ingreso','Visualizaciones','MarcaModelo_modelo_completo','Moneda','Marca_modelo_completo',
-        #                                'Extraccion Dia','Grupo de años_modelo_completo','grupo_id','Visuales por Dia','Año_mean','Grupo de años_modelo','Estado','KM_mean','Precio_mean','Precio_std','precio_margen_mean','precio_margen_median','Precio_relativestd',
-        #                                'km_margen_mean','km_margen_median','precio_margen_mean%','precio_margen_median%'])
-        modelo = modelo[['URL', 'Marca_modelo_completo','MarcaModelo_modelo_completo','Año','Precio','precio_margen_median', 'Kilometraje','KM_median', 'factor_muestra', 'factor_precio', 'factor_km', 'factor_extras', 'nota_final']]
+                nota_precio=(factor_mean*0.1)+(factor_mean_dinero*0.1)+(factor_median*0.2)+(factor_median_dinero*0.2)+(nota_relativestd*0.4)
 
-        new_column_names = {
-            'URL': 'Página Web',
-            'Marca_modelo_completo': 'Marca',
-            'MarcaModelo_modelo_completo': 'Modelo',
-            'precio_margen_median' : 'Ganancia Esperada',
-            'KM_median' : 'Kilometraje habitual',
-            'factor_muestra' : 'Nota Muestra',
-            'factor_precio' : 'Nota Precio',
-            'factor_km' : 'Nota Kilometraje',
-            'factor_extras' : 'Nota Extras',
-            'nota_final': 'Nota Final'
-        }
+                return nota_precio
 
-        modelo.rename(columns=new_column_names, inplace=True)
 
-        st.dataframe(modelo)
+            modelo['factor_muestra']=modelo['Precio_count'].apply(asignar_nota_marca)
+            modelo['factor_precio'] = modelo.apply(asignar_nota_precio, axis=1)
+            modelo['factor_año'] = 100 - (2024-modelo['Año'])
+            modelo['factor_km'] = 100-modelo['km_margen_median']
+
+
+            columns_to_count_indices = list(range(27, 66))
+            # Add a new column 'yes_count' to store the count of 'yes' values across specified columns
+            modelo['factor_extras'] = modelo.iloc[:, columns_to_count_indices].apply(lambda row: row.eq('SI').sum(), axis=1)
+            modelo['factor_extras']=modelo['factor_extras']/39*100
+
+            modelo['nota_final'] = (modelo['factor_muestra']*0.35)+(modelo['factor_precio']*0.25)+(modelo['factor_año']*0.3)+(modelo['factor_km']*0.15)+(modelo['factor_extras']*0.05)
+
+            modelo = modelo[modelo['nota_final'] > nota_final_minima]
+
+            modelo = modelo[modelo['Precio'] <= precio_maximo]
+
+            #columns_to_drop = [1, 3]  # Columns 'B' and 'D' by index
+            modelo = modelo.drop(modelo.columns[columns_to_count_indices], axis=1)
+            #modelo = modelo.drop(columns=['Color ext', 'Color int','Puertas','Libre impuestos','Negociable','Recibe','Provincia','Traspaso','Vehiculo_ID','Fecha ingreso','Visualizaciones','MarcaModelo_modelo_completo','Moneda','Marca_modelo_completo',
+            #                                'Extraccion Dia','Grupo de años_modelo_completo','grupo_id','Visuales por Dia','Año_mean','Grupo de años_modelo','Estado','KM_mean','Precio_mean','Precio_std','precio_margen_mean','precio_margen_median','Precio_relativestd',
+            #                                'km_margen_mean','km_margen_median','precio_margen_mean%','precio_margen_median%'])
+            modelo = modelo[['URL', 'Marca_modelo_completo','MarcaModelo_modelo_completo','Año','Precio','precio_margen_median', 'Kilometraje','KM_median', 'factor_muestra', 'factor_precio', 'factor_km', 'factor_extras', 'nota_final']]
+
+            new_column_names = {
+                'URL': 'Página Web',
+                'Marca_modelo_completo': 'Marca',
+                'MarcaModelo_modelo_completo': 'Modelo',
+                'precio_margen_median' : 'Ganancia Esperada',
+                'KM_median' : 'Kilometraje habitual',
+                'factor_muestra' : 'Nota Muestra',
+                'factor_precio' : 'Nota Precio',
+                'factor_km' : 'Nota Kilometraje',
+                'factor_extras' : 'Nota Extras',
+                'nota_final': 'Nota Final'
+            }
+
+            modelo.rename(columns=new_column_names, inplace=True)
+
+            st.dataframe(modelo)
+        
+        except:
+            st.write("No existen potenciales inversiones")
         
 
 
