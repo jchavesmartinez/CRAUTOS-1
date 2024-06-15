@@ -199,6 +199,8 @@ def estadisticas_visuales(cars_historico):
 
         df=dynamic_filters.filter_df()
 
+        st.write(df)
+
         st.markdown('<hr>', unsafe_allow_html=True)
 
         try:
