@@ -775,7 +775,7 @@ def estadisticas_visuales(cars_historico):
         #                                'km_margen_mean','km_margen_median','precio_margen_mean%','precio_margen_median%'])
 
         st.dataframe(modelo)
-        modelo = modelo[['URL']]
+        modelo = modelo[['URL', 'Marca_modelo_completo','MarcaModelo_modelo_completo','Año','Precio', 'Kilometraje']]
         st.dataframe(modelo)
         
 
